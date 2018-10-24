@@ -3,34 +3,10 @@ using UnityEngine;
 
 public abstract class BaseEntity : MonoBehaviour
 {
-    [SerializeField]
-    private int health = 10;
-
-    public int Health
+    private void Awake()
     {
-        get
-        {
-            return health;
-        }
+        OnEntityAwake();
     }
 
-    protected void BaseEntityAwake()
-    {
-        Assert.IsTrue(health >= 0);
-    }
-
-    protected virtual void OnDeath()
-    {
-        Destroy(gameObject);
-    }
-
-    public virtual void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0)
-        {
-            OnDeath();
-        }
-    }
+    protected virtual void OnEntityAwake() { }
 }

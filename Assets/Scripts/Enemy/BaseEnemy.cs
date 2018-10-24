@@ -2,19 +2,10 @@
 
 public abstract class BaseEnemy : BaseEntity
 {
-    protected virtual void DropLoot()
+    sealed protected override void OnEntityAwake()
     {
-        Debug.Log("@todo: implement DropLoot in BaseEnemy");
+        OnEnemyAwake();
     }
 
-    protected override void OnDeath()
-    {
-        DropLoot();
-        base.OnDeath();
-    }
-
-    protected void BaseEnemyAwake()
-    {
-        BaseEntityAwake();
-    }
+    protected virtual void OnEnemyAwake() { }
 }

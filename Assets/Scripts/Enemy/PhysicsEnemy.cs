@@ -4,29 +4,23 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PhysicsEnemy : BaseEnemy
 {
-    protected Rigidbody2D rb;
+    public Rigidbody2D Rb { get; private set; }
+    public Transform Transform { get; private set; }
 
-    public Rigidbody2D Rb
+    protected virtual void OnPhysicsEnemyAwake() { }
+    protected virtual void OnPhysicsFixedUpdate() { }
+
+    sealed protected override void OnEnemyAwake()
     {
-        get
-        {
-            return rb;
-        }
+        Rb = GetComponent<Rigidbody2D>();
+        Transform = Rb.transform;
+        Assert.IsNotNull(Rb);
+
+        OnPhysicsEnemyAwake();
     }
 
-    public Transform Transform
+    private void FixedUpdate()
     {
-        get
-        {
-            return rb.transform;
-        }
-    }
-
-    protected void PhysicsAwake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        Assert.IsNotNull(rb);
-
-        BaseEnemyAwake();
+        OnPhysicsFixedUpdate();
     }
 }
