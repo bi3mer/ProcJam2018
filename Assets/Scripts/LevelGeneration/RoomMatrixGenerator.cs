@@ -7,18 +7,14 @@ public class RoomMatrixGenerator
 {
     private readonly int width;
     private readonly int height;
-    private readonly float percentageToIgnoreNeighbor;
 
-    public RoomMatrixGenerator(int width, int height, float percentageToIgnoreNeighbor)
+    public RoomMatrixGenerator(int width, int height)
     {
         Assert.IsTrue(width > 0);
         Assert.IsTrue(height > 0);
-        Assert.IsTrue(percentageToIgnoreNeighbor >= 0);
-        Assert.IsTrue(percentageToIgnoreNeighbor <= 1);
 
         this.width = width;
         this.height = height;
-        this.percentageToIgnoreNeighbor = percentageToIgnoreNeighbor;
     }
 
     // @todo: should remove the invalid leaf, but it isn't important right now
@@ -161,6 +157,6 @@ public class RoomMatrixGenerator
         }
 
         //return neighborCount > 1;
-        return neighborCount > 1 && Random.Range(0f, 1f) > percentageToIgnoreNeighbor;
+        return neighborCount > 1;
     }
 }

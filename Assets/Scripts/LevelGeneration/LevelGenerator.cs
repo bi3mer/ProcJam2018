@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Assertions;
 using UnityEngine;
 
-public class GenerateMaze : MonoBehaviour
+public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
     private int width = 10;
@@ -10,14 +10,13 @@ public class GenerateMaze : MonoBehaviour
     private int height = 10;
 
     [SerializeField]
+    private NoiseType noise;
+
+    [SerializeField]
     private GameObject alive;
 
     [SerializeField]
     private GameObject dead;
-
-    [SerializeField]
-    [Range(0, 1)]
-    private float percentageToIgnoreNeighbor = 0.5f;
 
     private void Awake()
     {
@@ -25,10 +24,16 @@ public class GenerateMaze : MonoBehaviour
         Assert.IsNotNull(dead);
     }
 
-    private void Start ()
+    private void Start()
     {
-        RoomMatrixGenerator rmg = new RoomMatrixGenerator(width, height, percentageToIgnoreNeighbor);
+        GenerateMaze();
+    }
+
+    private void GenerateMaze ()
+    {
+        RoomMatrixGenerator rmg = new RoomMatrixGenerator(width, height);
         bool[,] roomMatrix = rmg.GenerateRoomMatrix();
+        roomMatrix = noise.ToClass(roomMatrix, width, height)?.ApplyNoise();
 
         for (int x = 0; x < width; ++x)
         {

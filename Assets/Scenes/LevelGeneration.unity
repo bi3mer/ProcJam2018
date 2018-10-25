@@ -208,10 +208,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 100
   height: 100
+  noise: 5
   alive: {fileID: 1165205678}
   dead: {fileID: 1757622318}
-  tileMultiplier: 4
-  percentageToIgnoreNeighbor: 0.002
 --- !u!1 &1165205678
 GameObject:
   m_ObjectHideFlags: 0
