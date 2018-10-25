@@ -18,15 +18,24 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private GameObject dead;
 
+    [SerializeField]
+    private GameObject player;
+
     private void Awake()
     {
         Assert.IsNotNull(alive);
         Assert.IsNotNull(dead);
+        Assert.IsNotNull(player);
+
+        Assert.IsTrue(width > 1);
+        Assert.IsTrue(height > 1);
     }
 
     private void Start()
     {
         GenerateMaze();
+        Instantiate(player);
+        player.transform.position = new Vector2(0.5f, 0.5f);
     }
 
     private void GenerateMaze ()
@@ -49,6 +58,7 @@ public class LevelGenerator : MonoBehaviour
                     obj = Instantiate(dead);
                 }
 
+                obj.transform.parent = transform;
                 obj.transform.position = new Vector2(x, y);
             }
         }

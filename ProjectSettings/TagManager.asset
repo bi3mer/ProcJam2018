@@ -20,7 +20,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - environment
   - 
   - 
   - 
@@ -43,4 +43,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 1823314623
+    locked: 0
+  - name: environment
+    uniqueID: 4204630639
+    locked: 0
+  - name: enemy
+    uniqueID: 1442132623
+    locked: 0
+  - name: bullet
+    uniqueID: 4061385871
+    locked: 0
+  - name: player
+    uniqueID: 1514572577
+    locked: 0
+  - name: foreground
+    uniqueID: 2223027401
     locked: 0
