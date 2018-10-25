@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Assertions;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -13,19 +14,20 @@ public class LevelGenerator : MonoBehaviour
     private NoiseType noise;
 
     [SerializeField]
-    private GameObject alive;
-
-    [SerializeField]
-    private GameObject dead;
-
-    [SerializeField]
     private GameObject player;
+
+    [SerializeField]
+    private Tilemap wallMap = null;
+
+    [SerializeField]
+    private RuleTile wallTile = null;
+
 
     private void Awake()
     {
-        Assert.IsNotNull(alive);
-        Assert.IsNotNull(dead);
         Assert.IsNotNull(player);
+        Assert.IsNotNull(wallMap);
+        Assert.IsNotNull(wallTile);
 
         Assert.IsTrue(width > 1);
         Assert.IsTrue(height > 1);
@@ -43,23 +45,15 @@ public class LevelGenerator : MonoBehaviour
         RoomMatrixGenerator rmg = new RoomMatrixGenerator(width, height);
         bool[,] roomMatrix = rmg.GenerateRoomMatrix();
         roomMatrix = noise.ToClass(roomMatrix, width, height)?.ApplyNoise();
-
+        
         for (int x = 0; x < width; ++x)
         {
             for (int y = 0; y < height; ++y)
             {
-                GameObject obj;
-                if (roomMatrix[x, y])
+                if (roomMatrix[x, y] == false)
                 {
-                    obj = Instantiate(alive);
+                    wallMap.SetTile(new Vector3Int(x, y, 0), wallTile);
                 }
-                else
-                {
-                    obj = Instantiate(dead);
-                }
-
-                obj.transform.parent = transform;
-                obj.transform.position = new Vector2(x, y);
             }
         }
     }
