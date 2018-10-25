@@ -1131,12 +1131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690e2dec747f53243a949bae48ac4ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 100
-  height: 100
-  noise: 3
+  width: 75
+  height: 75
+  noise: 5
   player: {fileID: 1647638026283356, guid: 49689dd72d33e0248846d46773c9c9e5, type: 2}
   wallMap: {fileID: 429547175}
   wallTile: {fileID: 11400000, guid: aed01a5890ce119469a4269d582c87ad, type: 2}
+  removeNoNeighborDeadCells: 1
 --- !u!4 &629443319
 Transform:
   m_ObjectHideFlags: 0

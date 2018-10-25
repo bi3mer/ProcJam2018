@@ -22,6 +22,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private RuleTile wallTile = null;
 
+    [SerializeField]
+    private bool removeNoNeighborDeadCells = true;
 
     private void Awake()
     {
@@ -45,6 +47,11 @@ public class LevelGenerator : MonoBehaviour
         RoomMatrixGenerator rmg = new RoomMatrixGenerator(width, height);
         bool[,] roomMatrix = rmg.GenerateRoomMatrix();
         roomMatrix = noise.ToClass(roomMatrix, width, height)?.ApplyNoise();
+
+        if (removeNoNeighborDeadCells)
+        {
+            roomMatrix = new RemoveNoNeighborAliveCells(roomMatrix, width, height).ApplyNoise();
+        }
         
         for (int x = 0; x < width; ++x)
         {
