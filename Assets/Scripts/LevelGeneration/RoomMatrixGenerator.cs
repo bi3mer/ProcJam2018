@@ -53,9 +53,24 @@ public class RoomMatrixGenerator
                     matrix[newLeafX, newLeafY] = true;
                     leafs.Add(new IntVector2(newLeafX, newLeafY));
 
-                    if ((newLeafX == endX && newLeafY == endY) || (newLeafX + 1 == endX && newLeafY + 1 == endY))
+                    if ((newLeafX == endX && newLeafY == endY))
                     {
                         pathFound = true;
+                    }
+                    else if (newLeafX + 1 == endX && newLeafY + 1 == endY)
+                    {
+                        pathFound = true;
+
+                        if (Random.Range(0f, 1f) > 0.5f)
+                        {
+                            matrix[endX - 1, endY] = true;
+                        }
+                        else
+                        {
+                            matrix[endX, endY - 1] = true;
+                        }
+
+                        matrix[endX, endY] = true;
                     }
 
                     break;
