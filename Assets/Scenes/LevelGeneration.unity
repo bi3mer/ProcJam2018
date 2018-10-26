@@ -999,6 +999,21 @@ Prefab:
       propertyPath: m_TileMatrixArray.Array.data[1].m_Data.e31
       value: 0.50836724
       objectReference: {fileID: 0}
+    - target: {fileID: 8195094279702801630, guid: bc5da10c3f7c8184ab983ece6d6a30f2,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094279702801630, guid: bc5da10c3f7c8184ab983ece6d6a30f2,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195094279702801630, guid: bc5da10c3f7c8184ab983ece6d6a30f2,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc5da10c3f7c8184ab983ece6d6a30f2, type: 2}
   m_IsPrefabAsset: 0
