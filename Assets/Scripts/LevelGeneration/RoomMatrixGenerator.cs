@@ -76,7 +76,10 @@ public class RoomMatrixGenerator
             // remove leaf it has no other directions to offer
             if (GetDirections(matrix, leafX, leafY).Count == 0)
             {
-                leafs.RemoveAt(leafIndex);
+                if (leafIndex >= 0 && leafIndex < leafs.Count)
+                {
+                    leafs.RemoveAt(leafIndex);
+                }
             }
 
             leafs.Shuffle();

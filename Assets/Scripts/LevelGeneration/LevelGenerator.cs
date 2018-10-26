@@ -38,7 +38,6 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         GenerateMaze();
-        Instantiate(player);
         player.transform.position = new Vector2(0.5f, 0.5f);
     }
 
@@ -52,16 +51,31 @@ public class LevelGenerator : MonoBehaviour
         {
             roomMatrix = new RemoveNoNeighborAliveCells(roomMatrix, width, height).ApplyNoise();
         }
+
+        int x;
+        int y;
         
-        for (int x = 0; x < width; ++x)
+        for (x = 0; x < width; ++x)
         {
-            for (int y = 0; y < height; ++y)
+            for (y = 0; y < height; ++y)
             {
                 if (roomMatrix[x, y] == false)
                 {
                     wallMap.SetTile(new Vector3Int(x, y, 0), wallTile);
                 }
             }
+        }
+
+        for (x = -1; x <= width; ++x)
+        {
+            wallMap.SetTile(new Vector3Int(x, -1, 0), wallTile);
+            wallMap.SetTile(new Vector3Int(x, height , 0), wallTile);
+        }
+
+        for (y = -1; y <= height; ++y)
+        {
+            wallMap.SetTile(new Vector3Int(-1, y, 0), wallTile);
+            wallMap.SetTile(new Vector3Int(width, y, 0), wallTile);
         }
     }
 }
