@@ -36,7 +36,6 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("hello world");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Paused)

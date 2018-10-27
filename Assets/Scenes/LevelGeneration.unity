@@ -1355,7 +1355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 75
   height: 75
-  noise: 5
+  noise: 8
   player: {fileID: 915178168}
   wallMap: {fileID: 429547175}
   wallTile: {fileID: 11400000, guid: aed01a5890ce119469a4269d582c87ad, type: 2}
@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 72
+  m_fontSize: 39.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1725,7 +1725,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 72
+  m_fontSize: 42.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

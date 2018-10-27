@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Assertions;
-using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -25,6 +25,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private bool removeNoNeighborDeadCells = true;
 
+    public bool[,] RoomMatrix { get; private set; }
+
     private void Awake()
     {
         Assert.IsNotNull(player);
@@ -44,12 +46,12 @@ public class LevelGenerator : MonoBehaviour
     private void GenerateMaze ()
     {
         RoomMatrixGenerator rmg = new RoomMatrixGenerator(width, height);
-        bool[,] roomMatrix = rmg.GenerateRoomMatrix();
-        roomMatrix = noise.ToClass(roomMatrix, width, height)?.ApplyNoise();
+        RoomMatrix = rmg.GenerateRoomMatrix();
+        RoomMatrix = noise.ToClass(RoomMatrix, width, height)?.ApplyNoise();
 
         if (removeNoNeighborDeadCells)
         {
-            roomMatrix = new RemoveNoNeighborAliveCells(roomMatrix, width, height).ApplyNoise();
+            RoomMatrix = new RemoveNoNeighborAliveCells(RoomMatrix, width, height).ApplyNoise();
         }
 
         int x;
@@ -59,7 +61,7 @@ public class LevelGenerator : MonoBehaviour
         {
             for (y = 0; y < height; ++y)
             {
-                if (roomMatrix[x, y] == false)
+                if (RoomMatrix[x, y] == false)
                 {
                     wallMap.SetTile(new Vector3Int(x, y, 0), wallTile);
                 }
@@ -78,4 +80,20 @@ public class LevelGenerator : MonoBehaviour
             wallMap.SetTile(new Vector3Int(width, y, 0), wallTile);
         }
     }
+
+    /* Dead code to generate a visualized path from bottom left to top right of the board
+    public void OnDrawGizmos()
+    {
+        if (Application.isPlaying)
+        {
+            List<IntVector2> path = AStar.GetPath(RoomMatrix, new IntVector2(0, 0), new IntVector2(width - 1, height - 1), Heuristics.Manhattan);
+            Gizmos.color = new Color(1, 0, 0, 0.7f);
+
+            for (int i = 0; i < path.Count; ++i)
+            {
+                Gizmos.DrawCube(new Vector3(path[i].X, path[i].Y), Vector3.one);
+            }
+        }
+    }
+    */
 }
