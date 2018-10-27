@@ -14,9 +14,6 @@ public class LevelGenerator : MonoBehaviour
     private NoiseType noise;
 
     [SerializeField]
-    private GameObject player;
-
-    [SerializeField]
     private Tilemap wallMap = null;
 
     [SerializeField]
@@ -29,7 +26,6 @@ public class LevelGenerator : MonoBehaviour
 
     private void Awake()
     {
-        Assert.IsNotNull(player);
         Assert.IsNotNull(wallMap);
         Assert.IsNotNull(wallTile);
 
@@ -37,13 +33,7 @@ public class LevelGenerator : MonoBehaviour
         Assert.IsTrue(height > 1);
     }
 
-    private void Start()
-    {
-        GenerateMaze();
-        player.transform.position = new Vector2(0.5f, 0.5f);
-    }
-
-    private void GenerateMaze ()
+    public void GenerateMaze ()
     {
         RoomMatrixGenerator rmg = new RoomMatrixGenerator(width, height);
         RoomMatrix = rmg.GenerateRoomMatrix();
@@ -80,20 +70,4 @@ public class LevelGenerator : MonoBehaviour
             wallMap.SetTile(new Vector3Int(width, y, 0), wallTile);
         }
     }
-
-    /* Dead code to generate a visualized path from bottom left to top right of the board
-    public void OnDrawGizmos()
-    {
-        if (Application.isPlaying)
-        {
-            List<IntVector2> path = AStar.GetPath(RoomMatrix, new IntVector2(0, 0), new IntVector2(width - 1, height - 1), Heuristics.Manhattan);
-            Gizmos.color = new Color(1, 0, 0, 0.7f);
-
-            for (int i = 0; i < path.Count; ++i)
-            {
-                Gizmos.DrawCube(new Vector3(path[i].X, path[i].Y), Vector3.one);
-            }
-        }
-    }
-    */
 }

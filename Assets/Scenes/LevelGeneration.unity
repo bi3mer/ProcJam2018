@@ -1334,6 +1334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 629443319}
+  - component: {fileID: 629443320}
   - component: {fileID: 629443318}
   m_Layer: 0
   m_Name: core
@@ -1353,10 +1354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690e2dec747f53243a949bae48ac4ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 75
-  height: 75
+  width: 15
+  height: 15
   noise: 8
-  player: {fileID: 915178168}
   wallMap: {fileID: 429547175}
   wallTile: {fileID: 11400000, guid: aed01a5890ce119469a4269d582c87ad, type: 2}
   removeNoNeighborDeadCells: 1
@@ -1373,6 +1373,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &629443320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 629443317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008f842daf6e88e4d9c5f39fd2f95a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 915178168}
 --- !u!1 &708491633
 GameObject:
   m_ObjectHideFlags: 0
