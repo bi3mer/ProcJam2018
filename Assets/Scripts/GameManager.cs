@@ -1,21 +1,22 @@
-﻿using UnityEngine.Assertions;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine.Assertions;
 using UnityEngine;
 
+// @todo: make this a singleton
 [RequireComponent(typeof(LevelGenerator))]
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
 
-    [SerializeField]
-    private int level = 1;
-
     private LevelGenerator levelGenerator;
 
+    public int Level { get; private set; }
     public bool[,] Board => levelGenerator.RoomMatrix;
 
     private void Awake()
     {
+        Level = PlayerPrefs.GetInt(PlayerPrefConstants.Level);
         levelGenerator = GetComponent<LevelGenerator>();
 
         Assert.IsNotNull(levelGenerator);
@@ -27,5 +28,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         levelGenerator.GenerateMaze();
+    }
+
+    public void LevelCompleted()
+    {
+        PlayerPrefs.SetInt(PlayerPrefConstants.Level, Level + 1);
+        SceneManager.LoadScene(1);
     }
 }
