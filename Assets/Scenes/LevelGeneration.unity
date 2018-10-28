@@ -1336,6 +1336,7 @@ GameObject:
   - component: {fileID: 629443319}
   - component: {fileID: 629443320}
   - component: {fileID: 629443318}
+  - component: {fileID: 629443321}
   m_Layer: 0
   m_Name: core
   m_TagString: Untagged
@@ -1386,6 +1387,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 915178168}
   ladder: {fileID: 1181544741519870, guid: 678b3cc9997979840814e1ff07fc29c8, type: 2}
+--- !u!114 &629443321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 629443317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6ede3a33fa0fc489cf564bb85eca21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSpawnCount: 10
 --- !u!1 &708491633
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,8 +7,8 @@ namespace CameraMovement
         private void FixedUpdate()
         {
             transform.position = new Vector3(
-                Player.Transform.position.x,
-                Player.Transform.position.y, 
+                Player.instance.transform.position.x,
+                Player.instance.transform.position.y, 
                 transform.position.z);
         }
     }

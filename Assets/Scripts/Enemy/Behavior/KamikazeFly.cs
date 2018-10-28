@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public class KamikazeFly : PhysicsEnemy
@@ -11,7 +10,7 @@ public class KamikazeFly : PhysicsEnemy
     {
         Rb.transform.position = Vector2.MoveTowards(
             transform.position, 
-            Player.Transform.position, 
+            Player.instance.transform.position, 
             speed * Time.fixedDeltaTime);
     }
 }

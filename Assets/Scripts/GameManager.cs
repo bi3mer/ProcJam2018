@@ -2,8 +2,8 @@
 using UnityEngine.Assertions;
 using UnityEngine;
 
-// @todo: make this a singleton
 [RequireComponent(typeof(LevelGenerator))]
+[RequireComponent(typeof(Spawner))]
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField]
@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     private GameObject ladder;
 
     private LevelGenerator levelGenerator;
+    private Spawner spawner;
 
     public int Level { get; private set; }
     public bool[,] Board => levelGenerator.RoomMatrix;
@@ -21,8 +22,10 @@ public class GameManager : Singleton<GameManager>
     {
         Level = PlayerPrefs.GetInt(PlayerPrefConstants.Level);
         levelGenerator = GetComponent<LevelGenerator>();
+        spawner = GetComponent<Spawner>();
 
         Assert.IsNotNull(levelGenerator);
+        Assert.IsNotNull(spawner);
         Assert.IsNotNull(player);
         Assert.IsNotNull(ladder);
     }
@@ -36,6 +39,8 @@ public class GameManager : Singleton<GameManager>
         int height = Board.GetLength(1);
         ladderObj.transform.position = new Vector3(width - 0.5f, height - 0.5f);
         ladderObj.gameObject.SetActive(true);
+
+        spawner.SpawnEnemies(Board, width, height, Level);
         player.transform.position = new Vector3(0.5f, 0.5f);
     }
 

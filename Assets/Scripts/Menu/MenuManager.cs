@@ -39,6 +39,7 @@ public class MenuManager : MonoBehaviour
         // so we enforce it here so restarting the game before they die
         // will not be effective
         PlayerPrefs.SetInt(PlayerPrefConstants.Level, 1);
+        PlayerPrefs.SetInt(PlayerPrefConstants.Health, -1);
     }
 
     private void OnDestroy()

@@ -1,18 +1,29 @@
-﻿using UnityEngine;
+﻿using UnityEngine.Assertions;
+using UnityEngine;
 
-public class Player : MonoBehaviour
+[RequireComponent(typeof(Healthful))]
+public class Player : Singleton<Player>
 {
-    private static Transform playerTransform;
-    public static Transform Transform
-    {
-        get
-        {
-            return playerTransform;
-        }
-    }
+    private Healthful health;
 
     private void Awake()
     {
-        playerTransform = transform;
+        health = GetComponent<Healthful>();
+        Assert.IsNotNull(health);
+    }
+
+    private void Start()
+    {
+        int health = PlayerPrefs.GetInt(PlayerPrefConstants.Health);
+
+        if (health != -1)
+        {
+            this.health.Health = health;
+        }
+    }
+
+    public void UpdateStoredPlayerHealth()
+    {
+        PlayerPrefs.SetInt(PlayerPrefConstants.Health, health.Health);
     }
 }
