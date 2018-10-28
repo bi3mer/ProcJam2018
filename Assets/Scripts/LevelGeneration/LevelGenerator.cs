@@ -5,6 +5,12 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
+    private int maxWidth = 75;
+
+    [SerializeField]
+    private int maxHeight = 75;
+
+    [SerializeField]
     private int baseWidth = 10;
 
     [SerializeField]
@@ -40,6 +46,9 @@ public class LevelGenerator : MonoBehaviour
         int multiplier = (int) Mathf.Ceil((2f * GameManager.instance.Level) / 5f);
         width = multiplier * baseWidth;
         height = multiplier * baseHeight;
+
+        width = width > maxWidth ? maxWidth : width;
+        height = height > maxHeight ? maxHeight : height;
 
         RoomMatrixGenerator rmg = new RoomMatrixGenerator(width, height);
         RoomMatrix = rmg.GenerateRoomMatrix();

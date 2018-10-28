@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
             RetrieveEnemies();
         }
 
-        int spawnCount = (int) Mathf.Ceil((baseSpawnCount * 4f) / 1.5f);
+        int spawnCount = (int) Mathf.Ceil((baseSpawnCount * level) / 1.5f);
         HashSet<float> usedPositions = new HashSet<float>();
 
         // make it so enemies can't be with in 5 places of where the player

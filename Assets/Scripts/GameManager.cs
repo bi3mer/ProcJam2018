@@ -1,4 +1,5 @@
 ﻿using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using UnityEngine.Assertions;
 using UnityEngine;
 
@@ -34,14 +35,40 @@ public class GameManager : Singleton<GameManager>
     {
         levelGenerator.GenerateMaze();
 
-        GameObject ladderObj = Instantiate(ladder);
         int width = Board.GetLength(0);
         int height = Board.GetLength(1);
-        ladderObj.transform.position = new Vector3(width - 0.5f, height - 0.5f);
-        ladderObj.gameObject.SetActive(true);
 
+        SpawnLadder(width, height);
         spawner.SpawnEnemies(Board, width, height, Level);
         player.transform.position = new Vector3(0.5f, 0.5f);
+    }
+
+    private void SpawnLadder(int width, int height)
+    {
+        List<IntVector2> positions = new List<IntVector2>();
+        int endX = width - 1;
+        int endY = height - 1;
+
+        if (Board[endX, endY])
+        {
+            positions.Add(new IntVector2(endX, endY));
+        }
+
+        if (Board[0, endY])
+        {
+            positions.Add(new IntVector2(0, endY));
+        }
+
+        if (Board[endX, 0])
+        {
+            positions.Add(new IntVector2(endX, 0));
+        }
+
+        IntVector2 spawnPos = positions[Random.Range(0, positions.Count)];
+
+        GameObject ladderObj = Instantiate(ladder);
+        ladderObj.transform.position = new Vector3(spawnPos.X +  0.5f, spawnPos.Y + 0.5f);
+        ladderObj.gameObject.SetActive(true);
     }
 
     public void LevelCompleted()
