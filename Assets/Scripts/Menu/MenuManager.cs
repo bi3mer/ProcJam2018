@@ -12,6 +12,9 @@ public class MenuManager : MonoBehaviour
     private Button infoButton;
 
     [SerializeField]
+    private Button exitButton;
+
+    [SerializeField]
     private GameObject infoPage;
 
     [SerializeField]
@@ -21,11 +24,13 @@ public class MenuManager : MonoBehaviour
     {
         Assert.IsNotNull(startButton);
         Assert.IsNotNull(infoButton);
+        Assert.IsNotNull(exitButton);
         Assert.IsNotNull(infoPage);
         Assert.IsNotNull(infoPageExitButton);
 
         startButton.onClick.AddListener(StartGame);
         infoButton.onClick.AddListener(ActivateInfoPage);
+        exitButton.onClick.AddListener(Exit);
         infoPageExitButton.onClick.AddListener(ReactivateMenu);
 
         ReactivateMenu();
@@ -40,6 +45,7 @@ public class MenuManager : MonoBehaviour
     {
         startButton.onClick.RemoveListener(StartGame);
         infoButton.onClick.RemoveListener(ActivateInfoPage);
+        exitButton.onClick.RemoveListener(Exit);
         infoPageExitButton.onClick.RemoveListener(ReactivateMenu);
     }
 
@@ -60,5 +66,10 @@ public class MenuManager : MonoBehaviour
         startButton.gameObject.SetActive(false);
         infoButton.gameObject.SetActive(false);
         infoPage.SetActive(true);
+    }
+
+    private void Exit()
+    {
+        Application.Quit();
     }
 }

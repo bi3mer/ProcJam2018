@@ -80,6 +80,13 @@ public class RoomMatrixGenerator
                 {
                     leafs.RemoveAt(leafIndex);
                 }
+                else
+                {
+                    // @note: i'm not sure why it would ever get here but it is possible.
+                    //        If it it is at this point, then we should have something 
+                    //        that the player can navigate anyways based on experinece
+                    return matrix;
+                }
             }
 
             leafs.Shuffle();
