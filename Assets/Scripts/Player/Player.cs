@@ -1,6 +1,7 @@
 ﻿using UnityEngine.Assertions;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerHealthListener))]
 [RequireComponent(typeof(Healthful))]
 public class Player : Singleton<Player>
 {

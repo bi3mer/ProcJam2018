@@ -83,9 +83,9 @@ public class RoomMatrixGenerator
                 else
                 {
                     // @note: i'm not sure why it would ever get here but it is possible.
-                    //        If it it is at this point, then we should have something 
-                    //        that the player can navigate anyways based on experinece
-                    return matrix;
+                    //        If it it is at this point, then we should scrap previous
+                    //        work and try again
+                    return GenerateRoomMatrix();
                 }
             }
 

@@ -12,6 +12,9 @@ public class MenuManager : MonoBehaviour
     private Button infoButton;
 
     [SerializeField]
+    private Button generationTesterButton;
+
+    [SerializeField]
     private Button exitButton;
 
     [SerializeField]
@@ -26,11 +29,13 @@ public class MenuManager : MonoBehaviour
         Assert.IsNotNull(infoButton);
         Assert.IsNotNull(exitButton);
         Assert.IsNotNull(infoPage);
+        Assert.IsNotNull(generationTesterButton);
         Assert.IsNotNull(infoPageExitButton);
 
         startButton.onClick.AddListener(StartGame);
         infoButton.onClick.AddListener(ActivateInfoPage);
         exitButton.onClick.AddListener(Exit);
+        generationTesterButton.onClick.AddListener(StartGenerationTester);
         infoPageExitButton.onClick.AddListener(ReactivateMenu);
 
         ReactivateMenu();
@@ -47,6 +52,7 @@ public class MenuManager : MonoBehaviour
         startButton.onClick.RemoveListener(StartGame);
         infoButton.onClick.RemoveListener(ActivateInfoPage);
         exitButton.onClick.RemoveListener(Exit);
+        generationTesterButton.onClick.RemoveListener(StartGenerationTester);
         infoPageExitButton.onClick.RemoveListener(ReactivateMenu);
     }
 
@@ -54,6 +60,8 @@ public class MenuManager : MonoBehaviour
     {
         startButton.gameObject.SetActive(true);
         infoButton.gameObject.SetActive(true);
+        generationTesterButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
         infoPage.SetActive(false);
     }
 
@@ -62,10 +70,17 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    private void StartGenerationTester()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     private void ActivateInfoPage()
     {
         startButton.gameObject.SetActive(false);
         infoButton.gameObject.SetActive(false);
+        generationTesterButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
         infoPage.SetActive(true);
     }
 

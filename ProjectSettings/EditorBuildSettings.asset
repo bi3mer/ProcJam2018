@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelGeneration.unity
     guid: 32dd6ca2454413449a0fcb8db99308db
+  - enabled: 1
+    path: Assets/Scenes/generation_tester.unity
+    guid: e73b919a70670d64696c9a4f3e6d4e3b
   m_configObjects: {}
