@@ -1354,8 +1354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690e2dec747f53243a949bae48ac4ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 15
-  height: 15
+  baseWidth: 15
+  baseHeight: 15
   noise: 8
   wallMap: {fileID: 429547175}
   wallTile: {fileID: 11400000, guid: aed01a5890ce119469a4269d582c87ad, type: 2}
@@ -1385,6 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 915178168}
+  ladder: {fileID: 1181544741519870, guid: 678b3cc9997979840814e1ff07fc29c8, type: 2}
 --- !u!1 &708491633
 GameObject:
   m_ObjectHideFlags: 0

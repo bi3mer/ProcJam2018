@@ -5,10 +5,10 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField]
-    private int width = 10;
+    private int baseWidth = 10;
 
     [SerializeField]
-    private int height = 10;
+    private int baseHeight = 10;
 
     [SerializeField]
     private NoiseType noise;
@@ -23,18 +23,24 @@ public class LevelGenerator : MonoBehaviour
     private bool removeNoNeighborDeadCells = true;
 
     public bool[,] RoomMatrix { get; private set; }
+    private int width;
+    private int height;
 
     private void Awake()
     {
         Assert.IsNotNull(wallMap);
         Assert.IsNotNull(wallTile);
 
-        Assert.IsTrue(width > 1);
-        Assert.IsTrue(height > 1);
+        Assert.IsTrue(baseWidth > 1);
+        Assert.IsTrue(baseHeight > 1);
     }
 
     public void GenerateMaze ()
     {
+        int multiplier = (int) Mathf.Ceil((2f * GameManager.instance.Level) / 5f);
+        width = multiplier * baseWidth;
+        height = multiplier * baseHeight;
+
         RoomMatrixGenerator rmg = new RoomMatrixGenerator(width, height);
         RoomMatrix = rmg.GenerateRoomMatrix();
         RoomMatrix = noise.ToClass(RoomMatrix, width, height)?.ApplyNoise();

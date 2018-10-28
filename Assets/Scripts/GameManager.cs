@@ -4,10 +4,13 @@ using UnityEngine;
 
 // @todo: make this a singleton
 [RequireComponent(typeof(LevelGenerator))]
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField]
     private GameObject player;
+
+    [SerializeField]
+    private GameObject ladder;
 
     private LevelGenerator levelGenerator;
 
@@ -21,13 +24,19 @@ public class GameManager : MonoBehaviour
 
         Assert.IsNotNull(levelGenerator);
         Assert.IsNotNull(player);
-
-        player.transform.position = new Vector3(0.5f, 0.5f);
+        Assert.IsNotNull(ladder);
     }
 
     private void Start()
     {
         levelGenerator.GenerateMaze();
+
+        GameObject ladderObj = Instantiate(ladder);
+        int width = Board.GetLength(0);
+        int height = Board.GetLength(1);
+        ladderObj.transform.position = new Vector3(width - 0.5f, height - 0.5f);
+        ladderObj.gameObject.SetActive(true);
+        player.transform.position = new Vector3(0.5f, 0.5f);
     }
 
     public void LevelCompleted()
