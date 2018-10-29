@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114454789932102438}
   - component: {fileID: 114052891885573784}
   - component: {fileID: 114410061905227618}
+  - component: {fileID: 114918684241312856}
   m_Layer: 0
   m_Name: KamikazeFly
   m_TagString: enemy
@@ -236,6 +237,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   health: 10
+--- !u!114 &114918684241312856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273836529733418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28963f263f536a54f8211a57bda08895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212171530157802804
 SpriteRenderer:
   m_ObjectHideFlags: 1

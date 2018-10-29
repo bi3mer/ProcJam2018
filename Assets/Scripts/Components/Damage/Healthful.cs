@@ -5,9 +5,9 @@ public class Healthful : MonoBehaviour
     [SerializeField]
     private int maxHealth = 1;
     [SerializeField]
-    private int health = 1;
+    private float health = 1;
 
-    public int Health
+    public float Health
     {
         get { return health; }
         set

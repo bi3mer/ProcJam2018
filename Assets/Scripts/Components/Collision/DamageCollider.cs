@@ -2,7 +2,7 @@
 
 public class DamageCollider : GeneralCollider
 {
-    public int Damage = 1;
+    public float Damage = 1;
 
     protected override void HandleCollision(GameObject other, EntityClassification classification)
     {

@@ -34,7 +34,7 @@ public class Player : Singleton<Player>
 
     public void UpdateStoredPlayerHealth()
     {
-        PlayerPrefs.SetInt(PlayerPrefConstants.Health, health.Health);
+        PlayerPrefs.SetInt(PlayerPrefConstants.Health, (int)health.Health);
     }
 
     public void AddShotMod(IShotMod mod)

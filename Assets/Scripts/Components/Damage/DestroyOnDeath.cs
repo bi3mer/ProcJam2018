@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestroyOnDeath : MonoBehaviour, IHealthUpdateListener
 {
@@ -14,7 +12,7 @@ public class DestroyOnDeath : MonoBehaviour, IHealthUpdateListener
         Destroy(gameObject);
     }
 
-    void IHealthUpdateListener.Init(int maxHealth, int health)
+    void IHealthUpdateListener.Init(int maxHealth, float health)
     {
         if (health == 0)
         {
@@ -22,7 +20,7 @@ public class DestroyOnDeath : MonoBehaviour, IHealthUpdateListener
         }
     }
 
-    void IHealthUpdateListener.UpdateHealth(int newHealth)
+    void IHealthUpdateListener.UpdateHealth(float newHealth)
     {
         if (newHealth == 0)
         {
@@ -30,7 +28,7 @@ public class DestroyOnDeath : MonoBehaviour, IHealthUpdateListener
         }
     }
 
-    void IHealthUpdateListener.UpdateMaxHealth(int newMaxHealth, int newHealth)
+    void IHealthUpdateListener.UpdateMaxHealth(int newMaxHealth, float newHealth)
     {
         //Don't care
     }

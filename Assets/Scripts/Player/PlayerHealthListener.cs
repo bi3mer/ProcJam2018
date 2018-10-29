@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PlayerHealthListener : MonoBehaviour, IHealthUpdateListener
 {
-    public void Init(int maxHealth, int health)
+    public void Init(int maxHealth, float health)
     {
     }
 
-    public void UpdateHealth(int newHealth)
+    public void UpdateHealth(float newHealth)
     {
         if (newHealth <= 0)
         {
@@ -17,7 +17,7 @@ public class PlayerHealthListener : MonoBehaviour, IHealthUpdateListener
         }
     }
 
-    public void UpdateMaxHealth(int newMaxHealth, int newHealth)
+    public void UpdateMaxHealth(int newMaxHealth, float newHealth)
     {
     }
 }

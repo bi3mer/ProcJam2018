@@ -7,7 +7,7 @@ public class Shot : MonoBehaviour
 {
     public float Speed = 25f;
     public float LifeTime = 5f;
-    public int Damage = 5;
+    public float Damage = 5;
     public float Size = 1f;
 
     private Rigidbody2D rb;

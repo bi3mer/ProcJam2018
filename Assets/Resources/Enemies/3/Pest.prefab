@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114223013472681820}
   - component: {fileID: 114067600533714266}
   - component: {fileID: 114960353814236628}
+  - component: {fileID: 114798036986107626}
   m_Layer: 0
   m_Name: Pest
   m_TagString: enemy
@@ -154,7 +155,7 @@ MonoBehaviour:
   hitEnemy: 0
   hitPlayer: 1
   hitEnvironment: 0
-  damage: 1
+  Damage: 1
 --- !u!114 &114223013472681820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,6 +181,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &114798036986107626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1081396466084658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28963f263f536a54f8211a57bda08895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114960353814236628
 MonoBehaviour:
   m_ObjectHideFlags: 1

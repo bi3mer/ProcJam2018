@@ -1,6 +1,6 @@
 ﻿public interface IHealthUpdateListener
 {
-    void Init(int maxHealth, int health);
-    void UpdateMaxHealth(int newMaxHealth, int newHealth);
-    void UpdateHealth(int newHealth);
+    void Init(int maxHealth, float health);
+    void UpdateMaxHealth(int newMaxHealth, float newHealth);
+    void UpdateHealth(float newHealth);
 }

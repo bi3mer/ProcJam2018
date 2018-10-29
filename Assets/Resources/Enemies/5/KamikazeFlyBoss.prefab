@@ -115,6 +115,9 @@ GameObject:
   - component: {fileID: 114979762183582000}
   - component: {fileID: 114995798521182994}
   - component: {fileID: 114948189734026776}
+  - component: {fileID: 114765925792802942}
+  - component: {fileID: 114110946230969182}
+  - component: {fileID: 114315298968059804}
   m_Layer: 0
   m_Name: KamikazeFlyBoss
   m_TagString: enemy
@@ -366,6 +369,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114110946230969182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1826069820590526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28963f263f536a54f8211a57bda08895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114125594364859656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,6 +425,17 @@ MonoBehaviour:
   triggerOnOtherDeath: 0
   lootToSpawn: {fileID: 1273836529733418, guid: 8d80227fdb342da44a2bcdd52920a0aa,
     type: 2}
+--- !u!114 &114315298968059804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1826069820590526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28963f263f536a54f8211a57bda08895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114327206158116060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -516,6 +541,17 @@ MonoBehaviour:
   triggerOnOtherDeath: 1
   lootToSpawn: {fileID: 1737447316706156, guid: 3bc73287de7e73c4ba22b986ab241bce,
     type: 2}
+--- !u!114 &114765925792802942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1826069820590526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28963f263f536a54f8211a57bda08895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114786542727038772
 MonoBehaviour:
   m_ObjectHideFlags: 1

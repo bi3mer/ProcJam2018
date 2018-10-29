@@ -3,12 +3,17 @@ using UnityEngine;
 
 public class ShotSpeedMod : MonoBehaviour, IShotMod
 {
-    public float Speed = 0f;
+    public float Speed = -1;
 
     public void ModifyShot(Shot shot)
     {
-        Assert.IsTrue(Speed > 0);
         Assert.IsNotNull(shot);
+
+        if (Speed == -1)
+        {
+            Speed = 1 + Random.Range(0f, 0.5f);
+        }
+
         shot.Speed += Speed;
     }
 }
