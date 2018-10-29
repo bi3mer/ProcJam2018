@@ -73,6 +73,7 @@ public class GameManager : Singleton<GameManager>
 
     public void LevelCompleted()
     {
+        Player.instance.UpdateStaticData();
         PlayerPrefs.SetInt(PlayerPrefConstants.Level, Level + 1);
         SceneManager.LoadScene(1);
     }

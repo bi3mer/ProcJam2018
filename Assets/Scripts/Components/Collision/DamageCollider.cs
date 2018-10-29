@@ -9,6 +9,7 @@ public class DamageCollider : GeneralCollider
         Healthful healthComponent = other.GetComponent<Healthful>();
         if (healthComponent != null)
         {
+            Debug.Log(Damage);
             healthComponent.Health -= Damage;
         }
     }

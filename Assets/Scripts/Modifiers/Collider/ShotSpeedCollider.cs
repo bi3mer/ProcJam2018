@@ -9,7 +9,8 @@ public class ShotSpeedCollider : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals(Tags.Player, StringComparison.Ordinal))
         {
-            Player.instance.AddShotMod(GetComponent<ShotSpeedMod>());
+            ShotSpeedMod mod = Player.instance.gameObject.AddComponent<ShotSpeedMod>();
+            mod.Speed = GetComponent<ShotSpeedMod>().Speed;
             Destroy(gameObject);
         }
     }

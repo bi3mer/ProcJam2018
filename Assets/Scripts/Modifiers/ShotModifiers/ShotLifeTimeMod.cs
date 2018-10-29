@@ -5,15 +5,17 @@ public class ShotLifeTimeMod : MonoBehaviour, IShotMod
 {
     public float LifeTimeIncrease = -1;
 
-    public void ModifyShot(Shot shot)
+    private void Start()
     {
-        Assert.IsNotNull(shot);
-
         if (LifeTimeIncrease < 0)
         {
             LifeTimeIncrease = Random.Range(0f, 0.1f);
         }
+    }
 
+    public void ModifyShot(ShotDataStructure shot)
+    {
+        Assert.IsNotNull(shot);
         shot.LifeTime += LifeTimeIncrease;
     }
 }

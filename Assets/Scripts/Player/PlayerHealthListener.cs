@@ -11,8 +11,7 @@ public class PlayerHealthListener : MonoBehaviour, IHealthUpdateListener
     {
         if (newHealth <= 0)
         {
-            PlayerPrefs.SetInt(PlayerPrefConstants.Level, 1);
-            PlayerPrefs.SetInt(PlayerPrefConstants.Health, -1);
+            StaticData.ResetData();
             SceneManager.LoadScene(0);
         }
     }

@@ -1,4 +1,4 @@
 ﻿public interface IShotMod
 {
-    void ModifyShot(Shot shot);
+    void ModifyShot(ShotDataStructure shot);
 }

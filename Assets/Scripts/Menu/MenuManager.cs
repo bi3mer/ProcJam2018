@@ -43,8 +43,7 @@ public class MenuManager : MonoBehaviour
         // we want the level to always start at level 1 for the players
         // so we enforce it here so restarting the game before they die
         // will not be effective
-        PlayerPrefs.SetInt(PlayerPrefConstants.Level, 1);
-        PlayerPrefs.SetInt(PlayerPrefConstants.Health, -1);
+        StaticData.ResetData();
     }
 
     private void OnDestroy()

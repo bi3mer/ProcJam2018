@@ -9,7 +9,8 @@ public class ShotLifeTimeCollider : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals(Tags.Player, StringComparison.Ordinal))
         {
-            Player.instance.AddShotMod(GetComponent<ShotLifeTimeMod>());
+            ShotLifeTimeMod mod = Player.instance.gameObject.AddComponent<ShotLifeTimeMod>();
+            mod.LifeTimeIncrease = GetComponent<ShotLifeTimeMod>().LifeTimeIncrease;
             Destroy(gameObject);
         }
     }

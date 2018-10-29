@@ -9,7 +9,8 @@ public class DamageModCollider : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals(Tags.Player, StringComparison.Ordinal))
         {
-            Player.instance.AddShotMod(GetComponent<ShotDamageMod>());
+            ShotDamageMod mod = Player.instance.gameObject.AddComponent<ShotDamageMod>();
+            mod.DamageIncrease = GetComponent<ShotDamageMod>().DamageIncrease;
             Destroy(gameObject);
         }
     }

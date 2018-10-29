@@ -56,13 +56,15 @@ public class PlayerAttacking : MonoBehaviour
                 transform.position + shotDirection * shotSpawnDisplacement,
                 Quaternion.identity);
 
-            List<IShotMod> shotMods = Player.instance.ShotMods;
-            count = shotMods.Count;
+            ShotDataStructure sds = new ShotDataStructure();
+            IShotMod[] shotMods = GetComponents<IShotMod>();
+            count = shotMods.Length;
             for (int i = 0; i < count; ++i)
             {
-                shotMods[i].ModifyShot(shot);
+                shotMods[i].ModifyShot(sds);
             }
 
+            shot.SDS = sds;
             shot.transform.forward = shotDirection;
         }
     }
