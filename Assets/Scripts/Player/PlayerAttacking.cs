@@ -1,5 +1,11 @@
-﻿using UnityEngine.Assertions;
+﻿using System.Collections.Generic;
+using UnityEngine.Assertions;
 using UnityEngine;
+
+public class PlayerAttackMod
+{
+    public float AttackRateMultiplier = 1f;
+}
 
 // @todo: handle case for weapons switching
 public class PlayerAttacking : MonoBehaviour
@@ -8,8 +14,7 @@ public class PlayerAttacking : MonoBehaviour
     private Shot shotPrefab;
 
     // @note: may be temp so it can play well with mods that are dropped
-    [SerializeField]
-    private float attackSpeed = 0.5f;
+    public float AttackSpeed = 0.5f;
 
     private float nextFire = 0f;
 
@@ -26,7 +31,15 @@ public class PlayerAttacking : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && Time.time > nextFire)
         {
-            nextFire = Time.time + attackSpeed;
+            PlayerAttackMod attackMod = new PlayerAttackMod();
+            IPlayerAttackMod[] mods = GetComponents<IPlayerAttackMod>();
+            int count = mods.Length;
+            for (int i = 0; i < count; ++i)
+            {
+                mods[i].ModAttack(attackMod);
+            }
+
+            nextFire = Time.time + AttackSpeed * attackMod.AttackRateMultiplier;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = transform.position.z;
 
@@ -38,10 +51,18 @@ public class PlayerAttacking : MonoBehaviour
                 shotDirection = Random.insideUnitCircle;
             }
 
-            GameObject shot = Instantiate(
-                shotPrefab.gameObject,
+            Shot shot = Instantiate(
+                shotPrefab,
                 transform.position + shotDirection * shotSpawnDisplacement,
                 Quaternion.identity);
+
+            List<IShotMod> shotMods = Player.instance.ShotMods;
+            count = shotMods.Count;
+            for (int i = 0; i < count; ++i)
+            {
+                shotMods[i].ModifyShot(shot);
+            }
+
             shot.transform.forward = shotDirection;
         }
     }

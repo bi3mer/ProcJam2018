@@ -1,14 +1,14 @@
 ﻿using UnityEngine.Assertions;
 using UnityEngine;
 
+[RequireComponent(typeof(DamageCollider))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Shot : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
-
-    [SerializeField]
-    private float lifeTime;
+    public float Speed = 25f;
+    public float LifeTime = 5f;
+    public int Damage = 5;
+    public float Size = 1f;
 
     private Rigidbody2D rb;
     private Vector2 forceVector;
@@ -17,19 +17,29 @@ public class Shot : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Assert.IsNotNull(rb);
-        Assert.IsFalse(lifeTime <= 0);
+        Assert.IsFalse(LifeTime <= 0);
+    }
 
-        Destroy(gameObject, lifeTime);
+    private void Start()
+    {
+        IShotMod[] shotMods = GetComponents<IShotMod>();
+        int count = shotMods.Length;
+
+        for (int i = 0; i < count; ++i)
+        {
+            shotMods[i].ModifyShot(this);
+        }
+
+        DamageCollider dmg = GetComponent<DamageCollider>();
+        Assert.IsNotNull(dmg);
+        dmg.Damage = Damage;
+
+        transform.localScale *= Size;
+        Destroy(gameObject, LifeTime);
     }
 
     private void FixedUpdate()
     {
-        rb.AddForce(transform.forward * speed);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(gameObject);
-        Debug.Log("do some damage or something worthwhile.");
+        rb.AddForce(transform.forward * Speed);
     }
 }

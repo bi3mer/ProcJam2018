@@ -656,7 +656,7 @@ MonoBehaviour:
   hitEnemy: 0
   hitPlayer: 1
   hitEnvironment: 0
-  damage: 5
+  Damage: 10
 --- !u!212 &212046443339168438
 SpriteRenderer:
   m_ObjectHideFlags: 1

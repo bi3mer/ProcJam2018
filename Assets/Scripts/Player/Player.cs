@@ -1,4 +1,5 @@
-﻿using UnityEngine.Assertions;
+﻿using System.Collections.Generic;
+using UnityEngine.Assertions;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerHealthListener))]
@@ -7,8 +8,16 @@ public class Player : Singleton<Player>
 {
     private Healthful health;
 
+    public List<IShotMod> ShotMods
+    {
+        get;
+        private set;
+    }
+
     private void Awake()
     {
+        ShotMods = new List<IShotMod>();
+
         health = GetComponent<Healthful>();
         Assert.IsNotNull(health);
     }
@@ -26,5 +35,11 @@ public class Player : Singleton<Player>
     public void UpdateStoredPlayerHealth()
     {
         PlayerPrefs.SetInt(PlayerPrefConstants.Health, health.Health);
+    }
+
+    public void AddShotMod(IShotMod mod)
+    {
+        Assert.IsNotNull(mod);
+        ShotMods.Add(mod);
     }
 }

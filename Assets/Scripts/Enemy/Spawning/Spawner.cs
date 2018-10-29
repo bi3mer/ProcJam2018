@@ -105,7 +105,7 @@ public class Spawner : MonoBehaviour
                 {
                     spawnCount -= cost;
                     GameObject enemy = Instantiate(enemyObjects[Random.Range(0, enemyObjects.Length)]);
-                    enemy.transform.position = new Vector3(x, y);
+                    enemy.transform.position = new Vector3(x + 0.5f, y + 0.5f);
                 }
             }
         }
