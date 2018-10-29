@@ -33,7 +33,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        levelGenerator.GenerateMaze();
+        levelGenerator.GenerateMaze(Level);
 
         int width = Board.GetLength(0);
         int height = Board.GetLength(1);
