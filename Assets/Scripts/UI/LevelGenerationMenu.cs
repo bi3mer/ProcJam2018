@@ -69,11 +69,13 @@ public class LevelGenerationMenu : MonoBehaviour
         NoiseType noise = NoiseType.NoNoise;
 
         // @note: this is inneficient and bad, but i'm running out of time
+        string agorithmType = algChoosingDropDown.options[algChoosingDropDown.value].text;
+
         List<NoiseType> noiseTypes = EnumUtility.ToList<NoiseType>();
         int count = noiseTypes.Count;
         for (int i = 0; i < count; ++i)
         {
-            if (noiseTypes[i].ToString().Equals(algChoosingDropDown.value.ToString()))
+            if (noiseTypes[i].ToString().Equals(agorithmType))
             {
                 noise = noiseTypes[i];
                 Debug.Log(noise);
