@@ -1355,6 +1355,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690e2dec747f53243a949bae48ac4ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxWidth: 75
+  maxHeight: 75
   baseWidth: 15
   baseHeight: 15
   noise: 8

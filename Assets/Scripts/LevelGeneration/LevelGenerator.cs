@@ -43,7 +43,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void GenerateMaze ()
     {
-        int multiplier = (int) Mathf.Ceil((2f * GameManager.instance.Level) / 5f);
+        int multiplier = (int) Mathf.Ceil((2f * GameManager.instance.Level) / 8f);
         width = multiplier * baseWidth;
         height = multiplier * baseHeight;
 

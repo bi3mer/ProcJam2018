@@ -154,7 +154,7 @@ MonoBehaviour:
   hitEnemy: 1
   hitPlayer: 0
   hitEnvironment: 0
-  damage: 1
+  damage: 5
 --- !u!114 &114693061632740932
 MonoBehaviour:
   m_ObjectHideFlags: 1
