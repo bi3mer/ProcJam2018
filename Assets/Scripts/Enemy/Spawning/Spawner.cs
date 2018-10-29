@@ -5,13 +5,9 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public const string EnemyResourceLocation = "Enemies";
-    public const string HardFolder = "Hard";
-    public const string MediumFolder = "Medium";
-    public const string EasyFolder = "Easy";
+    public const int MaxCost = 5;
 
-    private GameObject[] hardEnemies;
-    private GameObject[] mediumEnemies;
-    private GameObject[] easyEnemies;
+    private Dictionary<int, GameObject[]> enemies = new Dictionary<int, GameObject[]>();
     private bool retrievedEnemies = false;
 
     [SerializeField]
@@ -66,8 +62,7 @@ public class Spawner : MonoBehaviour
                         if (usedPositions.Contains(new IntVector2(testX, testY).Hashf) == false)
                         {
                             found = true;
-                            GameObject enemey = Instantiate(easyEnemies[0]);
-                            enemey.transform.position = new Vector3(testX, testY);
+                            spawnCount = SpawnEnemy(spawnCount, testX, testY);
                             break;
                         }
                     }
@@ -87,10 +82,42 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    private int SpawnEnemy(int spawnCount, int x, int y)
+    {
+        // choose which enemy cost to use
+        int maxCost = spawnCount > MaxCost ? MaxCost : spawnCount;
+        List<int> availableCosts = new List<int>();
+        for (int i = 1; i <= maxCost; ++i)
+        {
+            availableCosts.Add(i);
+        }
+
+        availableCosts.Shuffle();
+
+        // spawn the enemy
+        for (int i = 0; i < availableCosts.Count; ++i)
+        {
+            if (enemies.ContainsKey(i))
+            {
+                int cost = availableCosts[i];
+                GameObject[] enemyObjects = enemies[cost];
+                if (enemyObjects != null && enemyObjects.Length > 0)
+                {
+                    spawnCount -= cost;
+                    GameObject enemy = Instantiate(enemyObjects[Random.Range(0, enemyObjects.Length)]);
+                    enemy.transform.position = new Vector3(x, y);
+                }
+            }
+        }
+
+        return spawnCount;
+    }
+
     private void RetrieveEnemies()
     {
-        hardEnemies = Resources.LoadAll<GameObject>($"{EnemyResourceLocation}/{HardFolder}");
-        mediumEnemies = Resources.LoadAll<GameObject>($"{EnemyResourceLocation}/{MediumFolder}");
-        easyEnemies = Resources.LoadAll<GameObject>($"{EnemyResourceLocation}/{EasyFolder}");
+        for (int i = 1; i <= MaxCost; ++i)
+        {
+            enemies.Add(i, Resources.LoadAll<GameObject>($"{EnemyResourceLocation}/{i}/"));
+        }
     }
 }
