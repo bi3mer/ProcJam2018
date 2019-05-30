@@ -17,6 +17,8 @@ public class Conway : BaseNoise
 
         for (int epoch = 0; epoch < epochs; ++epoch)
         {
+            bool[,] newMatrix = new bool[width, height];
+
             for (x = 0; x < width; ++x)
             {
                 for (y = 0; y < height; ++y)
@@ -27,19 +29,21 @@ public class Conway : BaseNoise
                     {
                         if (neighborCount < 2)
                         {
-                            matrix[x, y] = false;
+                            newMatrix[x, y] = false;
                         }
                         else if (neighborCount > 3)
                         {
-                            matrix[x, y] = false;
+                            newMatrix[x, y] = false;
                         }
                     }
                     else if (neighborCount == 3)
                     {
-                        matrix[x, y] = true;
+                        newMatrix[x, y] = true;
                     }
                 }
             }
+
+            matrix = newMatrix;
         }
 
         return matrix;
